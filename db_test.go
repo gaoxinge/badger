@@ -32,9 +32,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coocood/badger/options"
-	"github.com/coocood/badger/table"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/options"
+	"github.com/Connor1996/badger/table"
+	"github.com/Connor1996/badger/y"
 	"github.com/stretchr/testify/require"
 )
 

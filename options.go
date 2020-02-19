@@ -17,7 +17,7 @@
 package badger
 
 import (
-	"github.com/coocood/badger/options"
+	"github.com/Connor1996/badger/options"
 )
 
 // NOTE: Keep the comments in the following to 75 chars width, so they

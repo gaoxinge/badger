@@ -23,9 +23,9 @@ import (
 	"log"
 	"sync"
 
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/y"
 
-	"github.com/coocood/badger/protos"
+	"github.com/Connor1996/badger/protos"
 )
 
 func writeTo(entry *protos.KVPair, w io.Writer) error {

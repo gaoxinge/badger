@@ -25,11 +25,11 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/coocood/badger/epoch"
-	"github.com/coocood/badger/options"
-	"github.com/coocood/badger/protos"
-	"github.com/coocood/badger/table"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/epoch"
+	"github.com/Connor1996/badger/options"
+	"github.com/Connor1996/badger/protos"
+	"github.com/Connor1996/badger/table"
+	"github.com/Connor1996/badger/y"
 	"github.com/dgraph-io/ristretto"
 	"github.com/stretchr/testify/require"
 )

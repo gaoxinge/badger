@@ -26,13 +26,14 @@ import (
 	"strconv"
 	"sync"
 	"sync/atomic"
+    "fmt"
 	"time"
 
-	"github.com/coocood/badger/epoch"
-	"github.com/coocood/badger/protos"
-	"github.com/coocood/badger/skl"
-	"github.com/coocood/badger/table"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/epoch"
+	"github.com/Connor1996/badger/protos"
+	"github.com/Connor1996/badger/skl"
+	"github.com/Connor1996/badger/table"
+	"github.com/Connor1996/badger/y"
 	"github.com/dgraph-io/ristretto"
 	"github.com/dgryski/go-farm"
 	"github.com/ncw/directio"
@@ -486,16 +487,19 @@ func (db *DB) checkExternalTables(tbls []*table.Table) error {
 	keys := make([][]byte, 0, len(tbls)*2)
 	for _, t := range tbls {
 		keys = append(keys, t.Smallest(), t.Biggest())
+	    fmt.Printf("smallest: %+v, biggest: %+v\n", t.Smallest(), t.Biggest())		
 	}
 	ok := sort.SliceIsSorted(keys, func(i, j int) bool {
 		return bytes.Compare(keys[i], keys[j]) < 0
 	})
 	if !ok {
+        fmt.Printf("not sorted\n")
 		return ErrExternalTableOverlap
 	}
 
 	for i := 1; i < len(keys)-1; i += 2 {
 		if bytes.Compare(keys[i], keys[i+1]) == 0 {
+            fmt.Printf("same key\n")
 			return ErrExternalTableOverlap
 		}
 	}

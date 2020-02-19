@@ -1,7 +1,7 @@
 package table
 
 import (
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/y"
 )
 
 // MergeTowIterator is a specialized MergeIterator that only merge tow iterators.

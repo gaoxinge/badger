@@ -25,9 +25,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/coocood/badger"
-	"github.com/coocood/badger/table"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger"
+	"github.com/Connor1996/badger/table"
+	"github.com/Connor1996/badger/y"
 	humanize "github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
 )

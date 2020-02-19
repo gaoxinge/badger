@@ -21,7 +21,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/coocood/badger"
+	"github.com/Connor1996/badger"
 	"github.com/spf13/cobra"
 )
 

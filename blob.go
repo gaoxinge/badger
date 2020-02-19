@@ -15,9 +15,9 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/coocood/badger/epoch"
-	"github.com/coocood/badger/fileutil"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/epoch"
+	"github.com/Connor1996/badger/fileutil"
+	"github.com/Connor1996/badger/y"
 	"github.com/ncw/directio"
 	"github.com/ngaut/log"
 	"github.com/pingcap/errors"

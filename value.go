@@ -31,9 +31,9 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/coocood/badger/fileutil"
-	"github.com/coocood/badger/options"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/fileutil"
+	"github.com/Connor1996/badger/options"
+	"github.com/Connor1996/badger/y"
 	"github.com/pingcap/errors"
 )
 

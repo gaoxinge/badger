@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/coocood/badger/cmd/badger/cmd"
+	"github.com/Connor1996/badger/cmd/badger/cmd"
 )
 
 func main() {

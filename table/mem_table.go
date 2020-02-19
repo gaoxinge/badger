@@ -6,8 +6,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/coocood/badger/skl"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/skl"
+	"github.com/Connor1996/badger/y"
 )
 
 type Entry struct {

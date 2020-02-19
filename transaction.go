@@ -24,8 +24,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/coocood/badger/epoch"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/epoch"
+	"github.com/Connor1996/badger/y"
 	"github.com/dgryski/go-farm"
 	"github.com/pingcap/errors"
 )

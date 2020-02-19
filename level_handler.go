@@ -21,9 +21,9 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/coocood/badger/epoch"
-	"github.com/coocood/badger/table"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/epoch"
+	"github.com/Connor1996/badger/table"
+	"github.com/Connor1996/badger/y"
 	"github.com/pingcap/errors"
 )
 

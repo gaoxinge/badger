@@ -22,8 +22,8 @@ import (
 	"io"
 	"sort"
 
-	"github.com/coocood/badger/surf"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/surf"
+	"github.com/Connor1996/badger/y"
 )
 
 var maxGlobalTs = [8]byte{0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}

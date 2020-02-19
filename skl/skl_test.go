@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/y"
 	"github.com/stretchr/testify/require"
 )
 

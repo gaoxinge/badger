@@ -27,9 +27,9 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/coocood/badger/options"
-	"github.com/coocood/badger/protos"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/options"
+	"github.com/Connor1996/badger/protos"
+	"github.com/Connor1996/badger/y"
 	"github.com/pingcap/errors"
 )
 

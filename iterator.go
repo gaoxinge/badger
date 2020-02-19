@@ -23,8 +23,8 @@ import (
 	"sort"
 	"sync/atomic"
 
-	"github.com/coocood/badger/table"
-	"github.com/coocood/badger/y"
+	"github.com/Connor1996/badger/table"
+	"github.com/Connor1996/badger/y"
 	"github.com/dgryski/go-farm"
 )
 
@@ -111,7 +111,7 @@ func (item *Item) ValueSize() int {
 // returned. Tip: It might make sense to reuse the returned slice as dst argument for the next call.
 //
 // This function is useful in long running iterate/update transactions to avoid a write deadlock.
-// See Github issue: https://github.com/coocood/badger/issues/315
+// See Github issue: https://github.com/Connor1996/badger/issues/315
 func (item *Item) ValueCopy(dst []byte) ([]byte, error) {
 	buf, err := item.Value()
 	if err != nil {
