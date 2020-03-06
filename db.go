@@ -171,6 +171,7 @@ func replayFunction(out *DB) func(Entry) error {
 
 // Open returns a new DB object.
 func Open(opt Options) (db *DB, err error) {
+	log.SetLevelByString("warning")
 	opt.maxBatchSize = (15 * opt.MaxTableSize) / 100
 	opt.maxBatchCount = opt.maxBatchSize / int64(skl.MaxNodeSize)
 
