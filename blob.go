@@ -143,7 +143,10 @@ func newBlobFileBuilder(fid uint32, dir string, writeBufferSize int) (*blobFileB
 	fileName := newBlobFileName(fid, dir)
 	file, err := directio.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
-		return nil, err
+		file, err = os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
+		if err != nil {
+			return nil, err
+		}
 	}
 	writer := fileutil.NewDirectWriter(file, writeBufferSize, nil)
 	// Write 4 bytes 0 header.
@@ -585,7 +588,10 @@ func (h *blobGCHandler) doGCIfNeeded() error {
 	fileName := newBlobFileName(newFid, h.bm.kv.opt.Dir)
 	file, err := directio.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
-		return err
+		file, err = os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
+		if err != nil {
+			return err
+		}
 	}
 	writer := fileutil.NewDirectWriter(file, 1024*1024, nil)
 	// 4 bytes addrMapping length

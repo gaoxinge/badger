@@ -402,7 +402,10 @@ func (lc *levelsController) compactBuildTables(level int, cd compactDef,
 		var fd *os.File
 		fd, err = directio.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
 		if err != nil {
-			return
+			fd, err = os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
+			if err != nil {
+				return
+			}
 		}
 		if builder == nil {
 			builder = table.NewTableBuilder(fd, limiter, cd.nextLevel.level, lc.opt)
