@@ -924,7 +924,12 @@ func (db *DB) runFlushMemTable(c *y.Closer) error {
 		fileName := table.NewFilename(fileID, db.opt.Dir)
 		fd, err := directio.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
 		if err != nil {
-			return y.Wrap(err)
+			// fallback to no directio
+			fd, err = os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
+			if err != nil {
+				log.Errorf("ERROR while opening file%s: %v", fileName, err)
+				return y.Wrap(err)
+			}
 		}
 
 		// Don't block just to sync the directory entry.
