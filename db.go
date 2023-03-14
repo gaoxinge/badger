@@ -35,7 +35,6 @@ import (
 	"github.com/Connor1996/badger/y"
 	"github.com/dgraph-io/ristretto"
 	farm "github.com/dgryski/go-farm"
-	"github.com/ncw/directio"
 	"github.com/ngaut/log"
 	"github.com/pingcap/errors"
 	"golang.org/x/time/rate"
@@ -752,7 +751,8 @@ func (db *DB) sendToWriteCh(entries []*Entry) (*request, error) {
 
 // batchSet applies a list of badger.Entry. If a request level error occurs it
 // will be returned.
-//   Check(kv.BatchSet(entries))
+//
+//	Check(kv.BatchSet(entries))
 func (db *DB) batchSet(entries []*Entry) error {
 	sort.Slice(entries, func(i, j int) bool {
 		return y.CompareKeysWithVer(entries[i].Key, entries[j].Key) < 0
@@ -768,9 +768,10 @@ func (db *DB) batchSet(entries []*Entry) error {
 // batchSetAsync is the asynchronous version of batchSet. It accepts a callback
 // function which is called when all the sets are complete. If a request level
 // error occurs, it will be passed back via the callback.
-//   err := kv.BatchSetAsync(entries, func(err error)) {
-//      Check(err)
-//   }
+//
+//	err := kv.BatchSetAsync(entries, func(err error)) {
+//	   Check(err)
+//	}
 func (db *DB) batchSetAsync(entries []*Entry, f func(error)) error {
 	req, err := db.sendToWriteCh(entries)
 	if err != nil {
@@ -922,14 +923,10 @@ func (db *DB) runFlushMemTable(c *y.Closer) error {
 
 		fileID := db.lc.reserveFileID()
 		fileName := table.NewFilename(fileID, db.opt.Dir)
-		fd, err := directio.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
+		fd, err := os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
 		if err != nil {
-			// fallback to no directio
-			fd, err = os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
-			if err != nil {
-				log.Errorf("ERROR while opening file%s: %v", fileName, err)
-				return y.Wrap(err)
-			}
+			log.Errorf("ERROR while opening file%s: %v", fileName, err)
+			return y.Wrap(err)
 		}
 
 		// Don't block just to sync the directory entry.
